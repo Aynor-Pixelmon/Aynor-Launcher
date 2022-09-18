@@ -64,11 +64,12 @@
     height: 37px;
     border-radius: 20px;
     border: none;
-    background: #00bd7a;
+    background: #9e0413;
     font: normal normal bold 20px/25px Poppins;
-    color: #121212;
+    color: #F1F1F1;
     margin: 15px 0;
-    box-shadow: 0 0 5px #00bd7a;
+    box-shadow: 0 0 5px #9e0413;
+
 }
 
 .download-content {
