@@ -22,19 +22,10 @@ class Splash {
 
     async startAnimation() {
         let splashes = [
-            { "message": "La Team Rocket est là,<br> on vous nargue et on vous ennuie...", "author": "Luuxis" },
             { "message": "Pikachu, attaque Tonnerre !", "author": "Luuxis" },
             { "message": "Un jour je serais le meilleur dresseur...", "author": "Luuxis" },
             { "message": "Tu me dois toujours une bicyclette !", "author": "Luuxis" },
-            { "message": "La véritable force d'un pokemon vient du coeur.", "author": "Luuxis" }
-        ];
-
-        splashes = [
-            { "message": "Je... vie...", "author": "Luuxis" },
-            { "message": "Salut je suis du code.", "author": "Luuxis" },
-            { "message": "Linux n' ai pas un os, mais un kernel.", "author": "Luuxis" }
-        ];
-        
+        ]        
         let splash = splashes[Math.floor(Math.random() * splashes.length)];
         this.splashMessage.textContent = splash.message;
         this.splashAuthor.children[0].textContent = "@" + splash.author;
