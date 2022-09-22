@@ -66,6 +66,7 @@ class Login {
                     refresh_token: account_connect.refresh_token,
                     user_properties: account_connect.user_properties,
                     meta: {
+                        xuid: account_connect.meta.xuid,
                         type: account_connect.meta.type,
                         demo: account_connect.meta.demo
                     }
