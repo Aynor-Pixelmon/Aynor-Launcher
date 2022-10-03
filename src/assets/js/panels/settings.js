@@ -5,6 +5,9 @@
 
 'use strict';
 
+const { shell } = require('electron');
+const nodePpath = require('path');
+
 import { database, changePanel, accountSelect, Slider } from '../utils.js';
 const dataDirectory = process.env.APPDATA || (process.platform == 'darwin' ? process.env.HOME + '/Library/Application Support' : process.env.HOME)
 
@@ -112,6 +115,12 @@ class Settings {
                 path.value = file.value.replace(/\\/g, "/");
             } else alert("Le nom du fichier doit être java ou javaw");
 
+        });
+
+        document.querySelector(".path-button-open").addEventListener("click", () => {
+            let pathFolder = nodePpath.resolve(dataDirectory + `/${process.platform == 'darwin' ? this.config.dataDirectory : `.${this.config.dataDirectory}`}/runtime`);
+            console.log(pathFolder);
+            shell.showItemInFolder(pathFolder) 
         });
 
         document.querySelector(".path-button-reset").addEventListener("click", () => {

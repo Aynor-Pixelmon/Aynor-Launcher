@@ -319,6 +319,23 @@
     background-color: #1f1f1f;
 }
 
+.path-button-open {
+    font: normal normal bold 13px/20px Poppins;
+    border-radius: 18px;
+    padding: 8px 30px;
+    background-color: #9e0413;
+    color: #F1F1F1F1;
+    cursor: pointer;
+    margin-left: 20px;
+    transition: color .2s, background-color .2s;
+    border: none;
+    outline: none;
+}
+
+.path-button-open:hover {
+    background-color: #1f1f1f;
+}
+
 .path-button-reset {
     font: normal normal bold 13px/20px Poppins;
     border-radius: 18px;
