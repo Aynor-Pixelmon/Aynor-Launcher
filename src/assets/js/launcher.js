@@ -14,17 +14,17 @@ import { config, logger, changePanel, database, addAccount, accountSelect } from
 import Login from './panels/login.js';
 import Home from './panels/home.js';
 import Settings from './panels/settings.js';
-import skin from './panels/panelSkin.js';
 
 class Launcher {
     async init() {
         this.initLog();
+        this.initBackground();
         console.log("Initializing Launcher...");
         if (process.platform == "win32") this.initFrame();
         this.config = await config.GetConfig().then(res => res);
         this.news = await config.GetNews().then(res => res);
         this.database = await new database().init();
-        this.createPanels(Login, Home, skin, Settings);
+        this.createPanels(Login, Home, Settings);
         this.getaccounts();
     }
 
@@ -35,6 +35,18 @@ class Launcher {
             }
         })
         new logger('Launcher', '#7289da')
+    }
+
+    async initBackground() {
+        let background
+        let body = document.body;
+
+        let backgrounds = fs.readdirSync(`${__dirname}/assets/images/background/`);
+        let Background = backgrounds[Math.floor(Math.random() * backgrounds.length)];
+        background = `linear-gradient(#00000080, #00000080), url(./assets/images/background/${Background})`;
+
+        body.style.backgroundImage = background
+        body.style.backgroundSize = 'cover';
     }
 
     initFrame() {
