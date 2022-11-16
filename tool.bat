@@ -20,6 +20,7 @@ if not exist "%CD%\node-v%ver%-win-x%arch%\node.exe" (
     del "%CD%\node-v%ver%-win-x%arch%\7z.dll"
     rmdir "%CD%\cache" /S /Q
 )
+
 cls
 :launch
 echo node:   start nodejs
