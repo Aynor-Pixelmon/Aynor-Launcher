@@ -18,7 +18,6 @@ import Settings from './panels/settings.js';
 class Launcher {
     async init() {
         this.initLog();
-        this.initBackground();
         console.log("Initializing Launcher...");
         if (process.platform == "win32") this.initFrame();
         this.config = await config.GetConfig().then(res => res);
@@ -35,18 +34,6 @@ class Launcher {
             }
         })
         new logger('Launcher', '#7289da')
-    }
-
-    async initBackground() {
-        let background
-        let body = document.body;
-
-        let backgrounds = fs.readdirSync(`${__dirname}/assets/images/background/`);
-        let Background = backgrounds[Math.floor(Math.random() * backgrounds.length)];
-        background = `linear-gradient(#00000080, #00000080), url(./assets/images/background/${Background})`;
-
-        body.style.backgroundImage = background
-        body.style.backgroundSize = 'cover';
     }
 
     initFrame() {
@@ -116,8 +103,8 @@ class Launcher {
                         refresh_token: refresh.refresh_token,
                         user_properties: refresh.user_properties,
                         meta: {
-                            xuid: refresh.meta.xuid,
                             type: refresh.meta.type,
+                            xuid: refresh.meta.xuid,
                             demo: refresh.meta.demo
                         }
                     }
@@ -179,6 +166,7 @@ class Launcher {
                     if (account.uuid === selectaccount) this.database.update({ uuid: "1234" }, 'accounts-selected')
                 }
             }
+            
             if (!(await this.database.get('1234', 'accounts-selected')).value.selected) {
                 let uuid = (await this.database.getAll('accounts'))[0]?.value?.uuid
                 if (uuid) {
