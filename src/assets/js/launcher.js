@@ -20,6 +20,7 @@ class Launcher {
         this.initLog();
         console.log("Initializing Launcher...");
         if (process.platform == "win32") this.initFrame();
+        this.initBackground();
         this.config = await config.GetConfig().then(res => res);
         this.news = await config.GetNews().then(res => res);
         this.database = await new database().init();
@@ -58,6 +59,18 @@ class Launcher {
         document.querySelector("#close").addEventListener("click", () => {
             ipcRenderer.send("main-window-close");
         })
+    }
+
+    async initBackground() {
+        let background
+        let body = document.body;
+
+        let backgrounds = fs.readdirSync(`${__dirname}/assets/images/background/`);
+        let Background = backgrounds[Math.floor(Math.random() * backgrounds.length)];
+        background = `linear-gradient(#00000080, #00000080), url(./assets/images/background/${Background})`;
+
+        body.style.backgroundImage = background
+        body.style.backgroundSize = 'cover';
     }
 
     createPanels(...panels) {
